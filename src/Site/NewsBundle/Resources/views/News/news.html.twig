@@ -1,0 +1,29 @@
+{% extends "SiteFirstBundle::layout.html.twig" %}
+
+
+{% block stylesheets %}  
+<link href="{{ asset('/bundles/sitefirst/css/style.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('/bundles/sitefirst/css/homepage.css') }}" rel="stylesheet" type="text/css" /><!-- homepage stylesheet -->
+<link href="{{ asset('/bundles/sitefirst/css/skins/lilac.css') }}" rel="stylesheet" type="text/css" /><!-- skin color -->
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="row">
+    {{ render(controller("SiteNewsBundle:News:getCategory")) }}
+    <br>
+    {{ render(controller("SiteNewsBundle:News:getTag")) }}
+
+    
+    {% for art in news %}
+       <h3 style="line-height:1.3; color:#9e7ead">{{ art.getTitle() }}</h3>
+       <p>{{ art.getInformation() | slice(0, 300) }}...
+       <a href="{{ path('site_news_article', {'slug': art.getSlug()}) }}">Читать дальше...</a>
+       </p>
+    {% endfor %}
+      
+</div>
+<ul class="pagination">
+                
+ {{ knp_pagination_render(news) }}
+</ul>
+{% endblock %}

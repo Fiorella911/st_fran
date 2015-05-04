@@ -1,0 +1,31 @@
+
+<div class="panel">
+    <div class="avatar">
+            <img src="/images/temp/author1.png" alt="">
+    </div>
+    <h5 class="left">АВТОР: <a href="{{ path('site_blog_userAllPosts', {'slug': user.getId}) }}">{{ user.getUserName() }}</a> </h5>
+        <div class="right">			
+            <div class="social facebook">
+                    <a href="#"></a>
+            </div>
+            <div class="social twitter">
+                    <a href="#"></a>
+            </div>
+            <div class="social deviantart">
+                    <a href="#"></a>
+            </div>
+            <div class="social flickr">
+                    <a href="#"></a>
+            </div>
+            <div class="social dribbble">
+                    <a href="#"></a>
+            </div>
+        </div>
+    <p class="clear authortext">
+       
+            {{ user.getBiography() }} 
+            <br>
+            <a href="{{ path('site_blog_userAllPosts', {'slug': user.getId}) }}">Другие статьи</a> этого автора.
+            <br/>
+    </p>
+</div>

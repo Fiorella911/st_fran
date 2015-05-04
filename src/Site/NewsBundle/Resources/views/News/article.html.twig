@@ -1,0 +1,17 @@
+{% extends "SiteFirstBundle::layout.html.twig" %}
+
+
+{% block content %}
+    
+
+<div class="row">     
+    {{ render(controller("SiteNewsBundle:News:getCategory")) }}
+    <br>
+    {{ render(controller("SiteNewsBundle:News:getTag")) }}
+    <br>
+ 
+    <h3 style="line-height:1.3; color:#9e7ead">{{ article.getTitle() }}</h3>
+    <p>{{ article.getInformation() }}</p>
+</div> 
+
+{% endblock %}

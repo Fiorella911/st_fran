@@ -1,0 +1,32 @@
+Site\BlogBundle\Entity\Blog:
+    type: entity
+    table: blog
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        slug:
+            type: string
+            length: 255
+        content:
+            type: text
+        date:
+            type: datetime
+    oneToMany:
+        comments:
+            targetEntity: Comments
+            mappedBy: blog
+    manyToOne:
+        user:
+            targetEntity: Bundles\UserBundle\Entity\User
+            inversedBy: blog
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

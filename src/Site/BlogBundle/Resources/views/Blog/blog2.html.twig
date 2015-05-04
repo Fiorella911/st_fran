@@ -1,0 +1,101 @@
+{% extends "SiteFirstBundle::layout.html.twig" %}
+
+{% block stylesheets %}  
+<link href="{{ asset('/bundles/sitefirst/css/style.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('/bundles/sitefirst/css/skins/lilac.css') }}" rel="stylesheet" type="text/css" /><!-- skin color -->
+<link href="{{ asset('/bundles/sitefirst/css/responsive.css') }}" rel="stylesheet" type="text/css" /><!-- nivo slider stylesheet -->
+<link href="{{ asset('/bundles/sitefirst/css/blog.css') }}" rel="stylesheet" type="text/css" /><!-- blog stylesheet -->
+{% endblock stylesheets %}
+
+{% block content %}
+<!-- SUBHEADER
+================================================== -->
+<div id="subheader">
+    <div class="row">
+        <div class="eight columns">
+            <p class="bread leftalign">
+                     Вы тут: <a href="{{ path('site_blog', {'slug':'blog2'}) }}">Блог</a> / 
+                     <a href="{{ path('site_blog', {'slug':'blog1'}) }}">Стиль 2</a>
+            </p>
+        </div>
+        <div class="four columns">
+            <div class="row collapse">
+                <div class="ten mobile-three columns">
+                        <input type="text" class="nomargin" placeholder="Search...">
+                </div>
+                <div class="two mobile-one columns">
+                        <a href="#" class="postfix button expand">Go</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hr">
+</div>
+<!-- CONTENT 
+================================================== -->
+<div class="row">
+        <div class="twelve columns noleftmargin">
+            <!-- MAIN CONTENT -->
+            <div class="eight columns noleftmargin">
+                
+                {% for post in  blogPost%}
+                <div class="circledate">
+                    <div class="textcircle">
+                            {{ post.getDate |date("d", "Europe/Kiev") }}
+                            <br>
+                            {{ post.getDate |date("M", "Europe/Kiev") }}
+                            <br>
+                            {{ post.getDate |date("Y", "Europe/Kiev") }}
+                    </div>
+                </div>
+                <h5>{{ post.getTitle }} <span class="comments">Комментари: {{ post.getComments |length  }}</span></h5>
+                <div class="dots blogdots">
+                </div>
+                {{ post.getContent | slice(0, 550) }}... <a href="{{ path('site_blog_singlePost', {'slug':post.getSlug}) }}" class="saymore">Читать далее</a>
+                <div class="hr">
+                </div>
+                 {% endfor %} 
+                 
+  
+                <ul class="pagination">
+                        <li class="arrow unavailable"><a href="">&laquo;</a></li>
+                        <li class="current"><a href="">1</a></li>
+                        <li><a href="">2</a></li>
+                        <li><a href="">3</a></li>
+                        <li><a href="">4</a></li>
+                        <li class="unavailable"><a href="">&hellip;</a></li>
+                        <li><a href="">12</a></li>
+                        <li><a href="">13</a></li>
+                        <li class="arrow"><a href="">&raquo;</a></li>
+                </ul>
+            </div>
+            <!-- SIDEBAR -->
+            <div class="four columns">
+            {#RECENT COMMENTS#}
+            {{ render(controller("SiteBlogBundle:Blog:recentComments")) }}
+                
+                
+                <br class="clear"/>
+                <h6 class="sidebartitle">POPULAR TAGS</h6>
+                <a href="#" class="tags">Photography</a>
+                <a href="#" class="tags">Vintage</a>
+                <a href="#" class="tags">Nature</a>
+                <a href="#" class="tags">Design</a>
+                <a href="#" class="tags">Printing</a>
+                <a href="#" class="tags">Contemporary</a>
+                <a href="#" class="tags">Classic</a>
+                <a href="#" class="tags">Elegant</a>
+                <a href="#" class="tags">Graphics</a>
+                <br class="clear"/>
+                <br/><br/>
+                
+            {#ПОПУЛЯРНЫЕ посты#}
+            {{ render(controller("SiteBlogBundle:Blog:popularPosts")) }}
+                
+            </div>
+        </div>
+    </div>
+<div class="hr">
+</div>
+{% endblock %}

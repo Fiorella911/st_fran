@@ -1,0 +1,21 @@
+{% extends "SiteFirstBundle::layout.html.twig" %}
+
+{% block content %}
+
+<div class="row">
+    {{ render(controller("SiteNewsBundle:News:getCategory")) }}
+    <br>
+    {{ render(controller("SiteNewsBundle:News:getTag")) }}
+    <br>
+    <h3 style="line-height:1.2; color:#2ba6cb">{{ category.getCategory() }}</h3>
+    {% for art in category.getNews() %}
+       <h3 style="line-height:1.3; color:#9e7ead">{{ art.getTitle() }}</h3>
+       <p>{{ art.getInformation() | slice(0, 300) }}...
+       <a href="{{ path('site_news_article', {'slug': art.getSlug()}) }}">Читать дальше...</a>
+       </p>
+    {% endfor %}
+      
+</div>
+
+
+{% endblock %}

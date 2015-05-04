@@ -1,0 +1,22 @@
+{% extends "SiteFirstBundle::layout.html.twig" %}
+
+
+
+{% block content %}
+<div id="other_form">
+    <h2>Калькулятор</h2>
+            <form action="" method="POST">
+                <input type="text" name="ch1" size="10" style="text-align:center"></input>
+                <input type="text" name="oper" size="3" style="text-align:center"></input>
+                <input type="text" name="ch2" size="10" style="text-align:center"></input>
+                <input type="submit" value="Считануть!" name="submit"></input>
+                <button type="reset">Очистить поля</button>
+            </form>
+
+
+	<div class = "image_fr"><img src="{{ asset('/bundles/sitefirst/images/MagicNumber.png') }}" /></div>
+    {% if calc %}
+        <div class = "answer"><p>{{ calc }}</p></div>
+    {% endif %}
+</div>	
+{% endblock %}

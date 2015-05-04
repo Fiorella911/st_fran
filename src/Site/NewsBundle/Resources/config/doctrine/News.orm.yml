@@ -1,0 +1,39 @@
+Site\NewsBundle\Entity\News:
+    type: entity
+    table: news
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        slug:
+            type: string
+            length: 255
+        information:
+            type: text
+    manyToOne:
+        category:
+            targetEntity: Categories
+            inversedBy: news
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+    manyToMany:
+        tags:
+            targetEntity: Tags
+            inversedBy: news
+            joinTable:
+                name: tags_to_news
+                joinColumns:
+                    news_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    tags_id:
+                        referencedColumnName: id
+
+    lifecycleCallbacks: {  }

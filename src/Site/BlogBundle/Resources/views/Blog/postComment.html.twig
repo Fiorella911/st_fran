@@ -1,0 +1,19 @@
+
+<h5>Комментари: {{ comments |length  }}</h5>
+<hr>
+{% for comm in comments %}
+    <div class="gravatar">
+        <img src="/images/gravatar.png" alt="">
+    </div>
+
+    <h5>{{ comm.getUser }}
+    <span class="commentdate">
+            {{ comm.getDatetime |date("F jS \\a\\t g:ia", "Europe/Kiev") }}
+    </span>
+    </h5>
+
+    <p>
+        {{ comm.getComment }}
+    </p>
+    <br class="clear">
+{% endfor %}

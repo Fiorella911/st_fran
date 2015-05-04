@@ -1,0 +1,9 @@
+
+<div>
+    <a href="{{ path('site_news') }}">Все |</a>
+    {% for art in category %}
+        <a href="{{ path('site_news_categories',{slug: art.getSlug}) }}">{{ art.getCategory }} |</a>
+    {% endfor %}
+  
+</div>
+

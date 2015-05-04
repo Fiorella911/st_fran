@@ -1,0 +1,9 @@
+
+<div>
+
+    {% for art in tag %}
+        <a href="{{ path('site_news_tag',{slug: art.getTag}) }}">{{ art.getTag }}|</a>
+    {% endfor %}
+  
+</div>
+

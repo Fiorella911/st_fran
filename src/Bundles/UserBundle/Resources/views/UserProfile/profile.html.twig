@@ -1,0 +1,19 @@
+
+{% extends "SiteFirstBundle::layout.html.twig" %}
+
+
+{% block content %}
+    <div class="row"> 
+        {% if is_granted('ROLE_USER') %}  
+        <p>Логин: {{ user.getUserName }}</p>
+        
+        <p>Имя: {{ user.getFirstName }}</p>
+       
+        <p>Фамилия: {{ user.getLastName }}</p>
+        
+        <p>E-mail: {{ user.getEmail }}</p>
+
+        <a href="{{ path("bundles_user_edit_profile") }}">Изменить данные</a>
+        {% endif %}  
+    </div>
+{% endblock %}

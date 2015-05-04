@@ -1,0 +1,11 @@
+
+    {% for art in threeLastNews  %}
+
+    <a href="{{ path('site_news_article', {'slug': art.getSlug()}) }} "><br>
+      <h5>{{ art.getTitle() }}</h5>
+      <p>{{ art.getInformation() | slice(0, 100) }}...</p>
+    </a>
+ 
+    {% endfor %}
+ 
+

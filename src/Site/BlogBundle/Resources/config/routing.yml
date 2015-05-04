@@ -1,0 +1,15 @@
+site_blog:
+    path:     /blog/{slug}
+    defaults: { _controller: SiteBlogBundle:Blog:index }
+
+site_blog_singlePost:
+    path:     /blog/single/{slug}
+    defaults: { _controller: SiteBlogBundle:Blog:singlePost }
+
+site_blog_userAllPosts:
+    path:     /blog/userposts/{slug}
+    defaults: { _controller: SiteBlogBundle:Blog:userAllPosts }
+
+site_blog_setPost:
+    path:     /blog/set/post
+    defaults: { _controller: SiteBlogBundle:Blog:setPost }

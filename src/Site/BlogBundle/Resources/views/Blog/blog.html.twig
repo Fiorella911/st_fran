@@ -1,0 +1,116 @@
+{% extends "SiteFirstBundle::layout.html.twig" %}
+
+{% block stylesheets %}  
+<link href="{{ asset('/bundles/sitefirst/css/style.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('/bundles/sitefirst/css/skins/lilac.css') }}" rel="stylesheet" type="text/css" /><!-- skin color -->
+<link href="{{ asset('/bundles/sitefirst/css/responsive.css') }}" rel="stylesheet" type="text/css" /><!-- nivo slider stylesheet -->
+<link href="{{ asset('/bundles/sitefirst/css/blog.css') }}" rel="stylesheet" type="text/css" /><!-- blog stylesheet -->
+{% endblock stylesheets %}
+
+
+{% block content %}
+<!-- SUBHEADER
+================================================== -->
+<div id="subheader">
+    <div class="row">
+        <div class="eight columns">
+            <p class="bread leftalign">
+                     Вы тут: <a href="{{ path('site_blog', {'slug':'blog1'}) }}">Блог</a> / 
+                     <a href="{{ path('site_blog', {'slug':'blog2'}) }}">Стиль 1</a>
+            </p>
+        </div>
+        <div class="four columns">
+            <div class="row collapse">
+                <div class="ten mobile-three columns">
+                        <input type="text" class="nomargin" placeholder="Search...">
+                </div>
+                <div class="two mobile-one columns">
+                        <a href="#" class="postfix button expand">Go</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hr">
+</div>
+<!-- CONTENT 
+================================================== -->
+<div class="row">
+    
+    <div class="twelve columns noleftmargin">
+        <!-- MAIN CONTENT -->
+            <div class="eight columns noleftmargin">
+                <h5><a href="{{ path('site_blog_setPost') }}" class="small continue">Добавить статью</a></h5>
+                {% for post in  blogPost%}
+                <div class="six columns">
+                    <div class="boxblog">
+                            <h5>{{ post.getTitle }}</h5>
+                            <p class="small date">
+                                    Опубликовано: {{ post.getDate |date("d/M/Y", "Europe/Kiev") }} <span class="has-tip tip-top" data-width="90" title="{{ post.getComments |length  }}"><img src="/images/comments.png" alt=""></span>
+                            </p>
+                            <p>
+                                <img src="/images/temp/nivo3.jpg" alt="" class="thumb">
+                                {{ post.getContent | slice(0, 200) }}
+                            </p>
+                            <p>
+                                <a href="{{ path('site_blog_singlePost', {'slug':post.getSlug}) }}" class="small continue">Читать дальше...</a>
+                            </p>
+                    </div>
+                </div>
+                {% endfor %}          
+              {#     /images/temp/folio3.jpg
+                   /images/temp/folio4.jpg
+                   /images/temp/folio6.jpg
+                   /images/temp/folio3.jpg
+                   /images/temp/nivo3.jpg
+                #}
+          
+               
+                <ul class="pagination">
+                    {{ knp_pagination_render(blogPagination) }}
+                   
+
+                    <li class="arrow unavailable"><a href="">&laquo;</a></li>
+                    <li class="current"><a href="">{{ blogPagination.getCurrentPageNumber }}</a></li>
+                   
+  
+                    <li><a href="">2</a></li>
+                    
+                    {#<li class="unavailable"><a href="">&hellip;</a></li>#}
+              
+                    <li class="arrow"><a href="">&raquo;</a></li>
+                </ul>
+                    
+                           
+        </div>
+               
+        <!-- SIDEBAR -->
+        <div class="four columns">
+        {#RECENT COMMENTS#}
+           {{ render(controller("SiteBlogBundle:Blog:recentComments")) }}
+
+            
+            
+            <br class="clear"/>
+            <h6 class="sidebartitle">POPULAR TAGS</h6>
+            <a href="#" class="tags">Photography</a>
+            <a href="#" class="tags">Vintage</a>
+            <a href="#" class="tags">Nature</a>
+            <a href="#" class="tags">Design</a>
+            <a href="#" class="tags">Printing</a>
+            <a href="#" class="tags">Contemporary</a>
+            <a href="#" class="tags">Classic</a>
+            <a href="#" class="tags">Elegant</a>
+            <a href="#" class="tags">Graphics</a>
+            <br class="clear"/>
+            <br/><br/>
+            
+        {#ПОПУЛЯРНЫЕ посты#}
+        {{ render(controller("SiteBlogBundle:Blog:popularPosts")) }}
+            
+         </div>
+    </div>
+</div>
+<div class="hr">
+</div>
+{% endblock %}

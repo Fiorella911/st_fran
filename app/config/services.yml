@@ -1,0 +1,75 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+#services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+services:
+    sonata.admin.news:
+        class: Site\NewsBundle\Admin\NewsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "News" }
+        arguments:
+            - ~
+            - Site\NewsBundle\Entity\News
+            - ~
+        calls:
+            - [ setTranslationDomain, [SiteNewsBundle]]
+    
+    sonata.admin.categories:
+        class: Site\NewsBundle\Admin\CategoriesAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Categories" }
+        arguments:
+            - ~
+            - Site\NewsBundle\Entity\Categories
+            - ~
+        calls:
+            - [ setTranslationDomain, [SiteNewsBundle]]
+            
+    sonata.admin.tags:
+        class: Site\NewsBundle\Admin\TagsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Tags" }
+        arguments:
+            - ~
+            - Site\NewsBundle\Entity\Tags
+            - ~
+        calls:
+            - [ setTranslationDomain, [SiteNewsBundle]]
+            
+    sonata.admin.StaticPage:
+        class: Site\FirstBundle\Admin\StaticPageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "StaticPage" }
+        arguments:
+            - ~
+            - Site\FirstBundle\Entity\StaticPage
+            - ~
+        calls:
+            - [ setTranslationDomain, [SiteNewsBundle]]
+            
+    sonata.admin.Blog:
+        class: Site\BlogBundle\Admin\BlogAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Blog" }
+        arguments:
+            - ~
+            - Site\BlogBundle\Entity\Blog
+            - ~
+        calls:
+            - [ setTranslationDomain, [SiteNewsBundle]]
+            
+    sonata.admin.Comments:
+        class: Site\BlogBundle\Admin\CommentsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Comments to Blog" }
+        arguments:
+            - ~
+            - Site\BlogBundle\Entity\Comments
+            - ~
+        calls:
+            - [ setTranslationDomain, [SiteNewsBundle]]

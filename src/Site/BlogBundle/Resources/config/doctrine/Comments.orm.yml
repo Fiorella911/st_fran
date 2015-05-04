@@ -1,0 +1,25 @@
+Site\BlogBundle\Entity\Comments:
+    type: entity
+    table: comments
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        user:
+            type: string
+            length: 255
+        comment:
+            type: text
+        datetime:
+            type: datetime
+    manyToOne:
+        blog:
+            targetEntity: Blog
+            inversedBy: comments
+            joinColumn:
+                name: blog_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

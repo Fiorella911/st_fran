@@ -1,0 +1,10 @@
+{% extends "SiteFirstBundle::layout.html.twig" %}
+
+
+
+{% block content %}
+    <div class="row"> 
+        <h3 style="color:#9e7ead">{{page.0.getTitle() }}</h3>
+        {{page.0.getContent() |raw}}
+    </div>
+{% endblock %}

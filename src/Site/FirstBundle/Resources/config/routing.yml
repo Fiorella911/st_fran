@@ -1,0 +1,22 @@
+site_first_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SiteFirstBundle:Default:index }
+
+site_first_main:
+    path:     /
+    defaults: { _controller: SiteFirstBundle:Main:index }
+    
+site_staticPage:
+    path:     /page/{slug}
+    defaults: { _controller: SiteFirstBundle:Main:staticPage }
+
+site_calculator:
+    path:     /calculator
+    defaults: { _controller: SiteFirstBundle:Main:calculator }
+    
+site_contacts:
+    path:     /contacts
+    defaults: { _controller: SiteFirstBundle:Main:contacts }
+
+
+

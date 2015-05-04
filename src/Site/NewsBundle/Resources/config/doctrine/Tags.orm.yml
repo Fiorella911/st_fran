@@ -1,0 +1,18 @@
+Site\NewsBundle\Entity\Tags:
+    type: entity
+    table: tags
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        tag:
+            type: string
+            length: 255
+    manyToMany:
+        news:
+          targetEntity: News
+          mappedBy: tags
+    lifecycleCallbacks: {  }

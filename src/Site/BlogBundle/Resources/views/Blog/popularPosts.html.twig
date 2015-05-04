@@ -1,0 +1,11 @@
+ <h6 class="sidebartitle">ПОПУЛЯРНЫЕ (надо по колич коментов)</h6>
+    {% for post in popularPosts  %}
+
+    <a href="{{ path('site_blog_singlePost', {'slug':post.getSlug}) }} ">
+      <h5>{{ post.getTitle() }}</h5>
+      <p>{{ post.getContent() | slice(0, 100) }}...</p>
+    </a>
+ 
+    {% endfor %}
+ 
+

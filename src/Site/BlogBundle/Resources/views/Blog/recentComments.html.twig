@@ -1,0 +1,34 @@
+
+<h6 class="sidebartitle">RECENT COMMENTS</h6>
+<div class="avatar">
+        <img src="/images/temp/author1.png" alt="">
+</div>
+<p>
+    <a href="{#{{ path('site_blog_singlePost', {'slug':post.getSlug}) }}#}">
+        <p>{{ recentComments.0.getComment() | slice(0, 90) }} ...</p>
+    </a>
+</p>
+
+
+<div class="avatar">
+        <img src="/images/temp/author2.png" alt="">
+</div>
+<p>
+    <a href="#">
+        <p>{{ recentComments.1.getComment() | slice(0, 90) }} ...</p>
+    </a>
+</p>
+
+<div class="avatar">
+        <img src="/images/temp/author3.png" alt="">
+</div>
+<p>
+    <a href="#">
+        <p>{{ recentComments.2.getComment() | slice(0, 90) }} ...</p>
+    </a>
+</p>
+
+
+
+ 
+
